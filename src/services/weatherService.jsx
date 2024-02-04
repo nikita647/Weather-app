@@ -4,8 +4,6 @@ const API_KEY=  "1fa9ff4126d95b8db54f3897a208e91c";
 
 const BASE_URL = "https://api.openweathermap.org/data/2.5";
 
-// https://api.openweathermap.org/data/2.5/onecall?lat=48.8534&lon=2.3488&exclude=current,minutely,hourly,alerts&appid=1fa9ff4126d95b8db54f3897a208e91c&units=metric
-
 const getWeatherData = (infoType, searchParams) => {
   const url = new URL(BASE_URL + "/" + infoType);
   url.search = new URLSearchParams({ ...searchParams, appid: API_KEY });
@@ -49,39 +47,6 @@ const formatCurrentWeather = (data) => {
 
 
 
-//const formatForecastWeather = (data) => {
-//    if (!data || !data.timezone || !data.daily || !data.hourly) {
-//   //   // Handle the case where the expected properties are missing
-//   //  return null; // You can return an empty object or handle it based on your requirements
-//    return { timezone: "", daily: [], hourly: [] };
-//    }
-
-//   let { timezone, daily, hourly } = data;
-
-//   // Check if daily and hourly arrays exist and have the expected structure
-//   if (!Array.isArray(daily) || !Array.isArray(hourly) || daily.length < 1 || hourly.length < 1) {
-//     // Handle the case where the expected arrays are missing or empty
-//     return null; // You can return an empty object or handle it based on your requirements
-//   }
-
-//   daily = daily.slice(1, 6).map((d) => {
-//     return {
-//       title: formatToLocalTime(d.dt, timezone, 'ccc'),
-//       temp: d.temp.day,
-//       icon: d.weather[0].icon,
-//     };
-//   });
-
-//   hourly = hourly.slice(1, 6).map((d) => {
-//     return {
-//       title: formatToLocalTime(d.dt, timezone, 'hh:mm a'),
-//       temp: d.temp,
-//       icon: d.weather[0].icon,
-//     };
-//   });
-
-//   return { timezone, daily, hourly };
-// };
 
 
 const formatForecastWeather = (data) => {
